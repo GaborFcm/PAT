@@ -2,11 +2,10 @@
 num = raw_input().split(' ')
 number, M = int(num[0]), int(num[1])
 A = raw_input().split(' ')
-M %= number
-for i in xrange(M):
-    b = A[-1]
-    A[1:] = A[:-1]
-    A[0] = b
-for i in A:
-    print i,
 
+if M != 0:
+    M %= number
+    M = -M
+
+for i in xrange(number):
+    print A[i+M],
