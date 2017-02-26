@@ -1,22 +1,17 @@
 # _*_coding:utf-8_*_
-def numbers_pt(x, y):   # running time out of
-    n, m = 0, 0
-    for i in x:
-        if i == 'P':
-            n += 1
-    for j in y:
-        if j == 'T':
-            m += 1
-    return n, m
 PAT = raw_input()
 num = 0
-index = []
+sum_T, sum_P, left_T = 0, 0, 0
 for i in xrange(len(PAT)):
-    if PAT[i] == 'A':
-        index.append(i)
+    if PAT[i] == 'T':
+        sum_T += 1
 count = 0
-for i in xrange(len(index)):
-    n, m = numbers_pt(PAT[:index[i]], PAT[index[i]:])
-    count += n*m
-print count % 1000000007
+for i in PAT:
+    if i == 'P':
+        sum_P += 1
+    elif i == 'A':
+        count += sum_P*(sum_T - left_T)%1000000007
+    else:
+        left_T += 1
+print count%1000000007
 
